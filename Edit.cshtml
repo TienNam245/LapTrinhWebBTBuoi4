@@ -1,0 +1,44 @@
+@model TodoListApp.Models.TodoItem
+@{
+    ViewData["Title"] = "S?a công vi?c";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; width: 50%;">
+    <div style="margin-bottom: 15px;">
+        <strong>Mã công vi?c</strong><br>
+        <div style="padding: 8px; background-color: white; border: 1px solid #ddd;">@Model.Id</div>
+    </div>
+    
+    <form asp-action="Edit">
+        <input type="hidden" asp-for="Id" />
+        
+        <div style="margin-bottom: 15px;">
+            <strong>Tên công vi?c</strong><br>
+            <input asp-for="Title" class="form-control" style="width: 100%; padding: 8px;" value="Ði ch?" />
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <strong>Tr?ng thái hoàn thành</strong><br>
+            <div style="margin-top: 10px;">
+                <input type="checkbox" asp-for="IsCompleted" id="statusCheckbox" />
+                <label for="statusCheckbox" style="margin-left: 8px;">Ðã hoàn thành</label>
+            </div>
+        </div>
+        
+        <div>
+            <button type="submit" class="btn btn-primary">Luu thay d?i</button>
+            <a href="/TodoItems" class="btn btn-secondary" style="margin-left: 10px;">Quay tr? l?i</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var checkbox = document.getElementById('statusCheckbox');
+        
+        // checkbox.checked = @Model.IsCompleted.ToString().ToLower();
+    });
+</script>
