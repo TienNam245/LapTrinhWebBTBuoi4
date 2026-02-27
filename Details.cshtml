@@ -1,0 +1,52 @@
+@model TodoListApp.Models.TodoItem
+@{
+    ViewData["Title"] = "Chi tiết công việc";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; width: 50%; margin-top: 20px;">
+    
+    
+    <div style="margin-bottom: 15px;">
+        <label style="font-weight: bold; display: block; margin-bottom: 5px;">Mã công việc</label>
+        <div style="padding: 10px; background-color: white; border: 1px solid #ced4da; border-radius: 4px;">
+            @Model.Id
+        </div>
+    </div>
+    
+  
+    <div style="margin-bottom: 15px;">
+        <label style="font-weight: bold; display: block; margin-bottom: 5px;">Tên công việc</label>
+        <div style="padding: 10px; background-color: white; border: 1px solid #ced4da; border-radius: 4px;">
+            @Model.Title
+        </div>
+    </div>
+    
+    
+    <div style="margin-bottom: 25px;">
+        <label style="font-weight: bold; display: block; margin-bottom: 5px;">Trạng thái hoàn thành</label>
+        <div style="padding: 10px; background-color: white; border: 1px solid #ced4da; border-radius: 4px;">
+            @if (Model.IsCompleted)
+            {
+                <span style="color: green; font-weight: bold;">✓ Đã hoàn thành</span>
+            }
+            else
+            {
+                <span style="color: orange; font-weight: bold;">Chưa hoàn thành</span>
+            }
+        </div>
+    </div>
+    
+    
+    <div style="display: flex; gap: 10px;">
+        <a href="/TodoItems/Edit/@Model.Id" class="btn btn-warning" 
+           style="padding: 10px 20px; font-size: 16px;">
+            Sửa
+        </a>
+        <a href="/TodoItems" class="btn btn-secondary" 
+           style="padding: 10px 20px; font-size: 16px;">
+            Quay trở lại
+        </a>
+    </div>
+</div>
