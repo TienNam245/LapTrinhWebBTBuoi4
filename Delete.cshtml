@@ -1,0 +1,44 @@
+@model TodoListApp.Models.TodoItem
+@{
+    ViewData["Title"] = "Xóa công việc";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3 style="color: red; margin-top: 20px;">Bạn có chắc chắn muốn xóa công việc này?</h3>
+
+<div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; width: 50%; margin-top: 20px;">
+    
+ 
+    <div style="margin-bottom: 15px;">
+        <label style="font-weight: bold; display: block; margin-bottom: 5px;">Mã công việc</label>
+        <div style="padding: 10px; background-color: white; border: 1px solid #ced4da; border-radius: 4px;">
+            @Model.Id
+        </div>
+    </div>
+    
+    
+    <div style="margin-bottom: 25px;">
+        <label style="font-weight: bold; display: block; margin-bottom: 5px;">Tên công việc</label>
+        <div style="padding: 10px; background-color: white; border: 1px solid #ced4da; border-radius: 4px;">
+            @Model.Title
+        </div>
+    </div>
+    
+    
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        
+      
+        <div style="display: flex; gap: 10px;">
+            <button type="submit" class="btn btn-danger" 
+                    style="padding: 10px 20px; font-size: 16px;">
+                Xóa
+            </button>
+            <a href="/TodoItems" class="btn btn-secondary" 
+               style="padding: 10px 20px; font-size: 16px;">
+                Hủy
+            </a>
+        </div>
+    </form>
+</div>
