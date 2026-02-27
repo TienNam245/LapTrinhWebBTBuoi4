@@ -1,0 +1,59 @@
+@model TodoListApp.Models.TodoItem
+@{
+    ViewData["Title"] = "Tạo mới công việc";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; width: 50%; margin-top: 20px;">
+    <form asp-action="Create" method="post">
+   
+        <div style="margin-bottom: 20px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Tên công việc</label>
+            <input asp-for="Title" class="form-control" 
+                   style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px;"
+                   placeholder="Nhập tên công việc" />
+        </div>
+        
+        
+        <div style="margin-bottom: 30px;">
+            <label style="font-weight: bold; display: block; margin-bottom: 10px;">Trạng thái hoàn thành</label>
+            <div style="display: flex; align-items: center;">
+                <input type="checkbox" asp-for="IsCompleted" 
+                       id="createStatusCheckbox" 
+                       style="width: 20px; height: 20px; margin-right: 10px;" />
+                <label for="createStatusCheckbox" style="font-size: 16px;">
+                    Đã hoàn thành
+                </label>
+            </div>
+        </div>
+        
+       
+        <div style="display: flex; gap: 10px;">
+            <button type="submit" class="btn btn-primary" 
+                    style="padding: 10px 20px; font-size: 16px;">
+                Tạo mới
+            </button>
+            <a href="/TodoItems" class="btn btn-secondary" 
+               style="padding: 10px 20px; font-size: 16px;">
+                Quay trở lại
+            </a>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var checkbox = document.getElementById('createStatusCheckbox');
+        var label = document.querySelector('label[for="createStatusCheckbox"]');
+        
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                label.textContent = '✓ Đã hoàn thành';
+            } else {
+                label.textContent = 'Đã hoàn thành';
+            }
+        });
+    });
+</script>
